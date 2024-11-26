@@ -1,0 +1,1 @@
+!pip install olefile PyPDF2 supabase openai==0.28 python-docx flask
