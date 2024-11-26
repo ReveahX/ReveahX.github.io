@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Run Python Script</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #output {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Python Script Output</h1>
+    <div id="output">Fetching...</div>
+
+    <script>
+        async function fetchScriptOutput() {
+            try {
+                const response = await fetch('/run-script');
+                const data = await response.json();
+                document.getElementById('output').innerText = data.output || data.error;
+            } catch (error) {
+                document.getElementById('output').innerText = "Error fetching output!";
+            }
+        }
+
+        // Fetch the script's output every 2 seconds
+        setInterval(fetchScriptOutput, 2000);
+    </script>
+</body>
+</html>
